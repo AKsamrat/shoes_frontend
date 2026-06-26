@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* ─── Custom Keyframes ──────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(-15deg); }
+  50%       { transform: translateY(-28px) rotate(-15deg); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(10deg); }
+  50%       { transform: translateY(-18px) rotate(10deg); }
+}
+
+@keyframes heroSlideIn {
+  from { opacity: 0; transform: translateX(-80px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heroImageIn {
+  from { opacity: 0; transform: translateX(80px) scale(0.9); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.75); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Hero slide-in from bottom-right (passport thumbnail) */
+@keyframes slideInPassport {
+  0%   { transform: translate(120px, 120px) scale(0.55); opacity: 0; }
+  60%  { transform: translate(-6px, -6px) scale(1.04); opacity: 1; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+
+/* Active shoe expands from thumbnail to full hero */
+@keyframes expandToHero {
+  0%   { transform: scale(0.55) translateY(40px); opacity: 0.6; filter: blur(4px); }
+  100% { transform: scale(1)    translateY(0px);  opacity: 1;   filter: blur(0px); }
+}
+
+/* bg cross-fade */
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Text line reveal */
+@keyframes lineReveal {
+  from { opacity: 0; transform: translateY(30px) skewY(3deg); }
+  to   { opacity: 1; transform: translateY(0)    skewY(0deg); }
+}
+
+/* Progress bar fill */
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* Subtle shoe idle float */
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0px)   rotate(-6deg); }
+  50%       { transform: translateY(-20px) rotate(-6deg); }
+}
+
+/* Passport card stagger slide-up */
+@keyframes cardStagger {
+  from { transform: translateY(80px) scale(0.8); opacity: 0; }
+  to   { transform: translateY(0)    scale(1);   opacity: 1; }
+}
+
+/* ─── Utility Classes ───────────────────────────────────────────── */
+
+.animate-float      { animation: float 4s ease-in-out infinite; }
+.animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+
+.animate-hero-text  { animation: heroSlideIn 0.9s cubic-bezier(.16,1,.3,1) both; }
+.animate-hero-img   { animation: heroImageIn 1s cubic-bezier(.16,1,.3,1) 0.2s both; }
+
+.reveal-up    { opacity: 0; }
+.reveal-left  { opacity: 0; }
+.reveal-right { opacity: 0; }
+.reveal-scale { opacity: 0; }
+
+.reveal-up.is-visible    { animation: fadeUp   0.75s cubic-bezier(.16,1,.3,1) both; }
+.reveal-left.is-visible  { animation: fadeLeft 0.75s cubic-bezier(.16,1,.3,1) both; }
+.reveal-right.is-visible { animation: fadeRight 0.75s cubic-bezier(.16,1,.3,1) both; }
+.reveal-scale.is-visible { animation: scaleIn  0.65s cubic-bezier(.16,1,.3,1) both; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #f59e0b, #ef4444, #8b5cf6, #f59e0b);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+.gradient-animate {
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 18s linear infinite;
+}
+
+.card-hover {
+  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+}
+
+.shoe-hover {
+  transition: transform 0.5s cubic-bezier(.16,1,.3,1);
+}
+.shoe-hover:hover {
+  transform: rotate(-8deg) scale(1.12);
+}
+
+/* ── Hero v2 ────────────────────────────────────────────────────── */
+
+/* Background layer transition */
+.hero-bg {
+  transition: opacity 0s;
+}
+.hero-bg-enter {
+  animation: bgFadeIn 0.8s ease both;
+}
+
+/* Main shoe display */
+.hero-shoe-active {
+  animation: expandToHero 0.7s cubic-bezier(.16,1,.3,1) both;
+}
+.hero-shoe-idle {
+  animation: heroFloat 5s ease-in-out infinite;
+}
+
+/* Passport thumbnail cards */
+.passport-card {
+  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+.passport-card:hover {
+  transform: scale(1.08) translateY(-4px);
+}
+.passport-card.active {
+  box-shadow: 0 0 0 3px #fff, 0 8px 32px rgba(0,0,0,0.5);
+}
+
+/* Passport stagger animation */
+.passport-stagger {
+  animation: cardStagger 0.55s cubic-bezier(.16,1,.3,1) both;
+}
+
+/* Hero copy lines */
+.hero-line {
+  animation: lineReveal 0.6s cubic-bezier(.16,1,.3,1) both;
+  display: block;
+  overflow: hidden;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.25);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #fff;
+}
+.progress-fill.running {
+  animation: progressFill var(--duration, 4s) linear both;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: skewX(-25deg);
+  transition: left 0.5s ease;
+}
+.btn-shine:hover::after {
+  left: 125%;
+}
