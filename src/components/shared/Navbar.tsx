@@ -5,9 +5,11 @@ import {
   FaShoppingCart, FaSearch, FaUser,
 } from "react-icons/fa";
 import { navRoutes } from "../../routes/navRoutes";
+import { useAppSelector } from "../../store/hooks";
 
-/* ── cart count stub — replace with your real store ── */
-const useCartCount = () => 3;
+/* ── cart count from Redux ── */
+const useCartCount = () =>
+  useAppSelector((s) => s.cart.items.reduce((acc, i) => acc + i.qty, 0));
 
 const Navbar = () => {
   const [isOpen,       setIsOpen]       = useState(false);

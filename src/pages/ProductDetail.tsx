@@ -6,6 +6,8 @@ import {
   FaFire, FaChevronLeft, FaChevronRight, FaSearch,
 } from "react-icons/fa";
 import { FEATURED } from "../components/home/homeData";
+import { useAppDispatch } from "../store/hooks";
+import { addItem } from "../store/cartSlice";
 
 /* ─── Image zoom hook ───────────────────────────────────────────── */
 function useImageZoom() {
